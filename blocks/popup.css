@@ -8,6 +8,13 @@
   align-items: center;
   justify-content: center;
   background-color: rgba(0, 0, 0, 0.5);
+  visibility: hidden;
+  transition: opacity 0.6s;
+}
+
+.popup_opened {
+  opacity: 1;
+  visibility: visible;
 }
 
 .popup__content {
@@ -16,7 +23,7 @@
   max-width: 430px;
   height: 330px;
   border-radius: 10px;
- position: relative;
+  position: relative;
 }
 .popup__title {
   font-weight: 900;
@@ -26,22 +33,21 @@
 }
 
 .popup__input {
-  
   width: 358px;
   max-height: 15px;
   border: none;
-  border-bottom: 1px solid black;
-  opacity: 0.2;
+  border-bottom: 1px solid rgba(0, 0, 0, 0.2);
   margin-left: 36px;
   margin-right: 36px;
   font-weight: 400;
   font-size: 14px;
   line-height: 17px;
   padding-bottom: 13.26px;
+  
 }
 .popup__input_type_profession {
- margin-top: 29.74px;
- margin-bottom: 48px;
+  margin-top: 29.74px;
+  margin-bottom: 48px;
 }
 
 .popup__submit-button {
@@ -55,14 +61,13 @@
   border-radius: 2px;
   color: white;
   background-color: black;
-  margin:0 36px 36.51px;
+  margin: 0 36px 36.51px;
   border: 0;
   padding: 0;
-
 }
-.popup__submit-button:hover{
-    opacity: 0.8;
-    cursor: pointer;
+.popup__submit-button:hover {
+  opacity: 0.8;
+  cursor: pointer;
 }
 .popup__close {
   position: absolute;
@@ -79,12 +84,10 @@
   height: 100%;
   transform: rotate(-45deg);
 }
-.popuo__close:hover{
-    opacity: 0.6;
-    cursor: pointer;
+.popuo__close:hover {
+  opacity: 0.6;
+  cursor: pointer;
 }
-
-
 
 @media screen and (max-width: 595px) {
   .popup__content {

@@ -45,7 +45,7 @@
             />
           </button>
         </section>
-        <div class="popup">
+        <div class="popup popup_type_profile" >
           <div class="popup__content">
             <button type="button" class="popup__close">
               <img
@@ -55,11 +55,11 @@
               />
             </button>
             <h3 class="popup__title">Edit Profile</h3>
-            <form>
-              <label class="popup__label"></label>
-              <input class="popup__input popup__input_type_name" type="text" />
-              <label class="popup__label"></label>
-              <input class="popup__input popup__input_type_profession" type="text"/>
+            <form class="popup__form popup__form_type_profile">
+              
+              <input class="popup__input popup__input_type_name" type="text" id="Jacques cousteau" name="Jacques" />
+              
+              <input class="popup__input popup__input_type_profession" type="text" id="Explorer" name="explorer" />
               <button type="submit" class="popup__submit-button">Save</button>
             </form>
           </div>
@@ -174,5 +174,6 @@
         <p class="footer__title">© 2022 Around The U.S.</p>
       </footer>
     </div>
+    <script src="./index.js"></script>
   </body>
 </html>

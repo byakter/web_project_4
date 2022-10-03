@@ -11,3 +11,6 @@
     border: #000;
   }
   
+  .heart_active{
+    background-color: black;
+  }

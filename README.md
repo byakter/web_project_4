@@ -1,16 +1,41 @@
+
 # Project 4: Around The U.S.
+This is my 4rd project of the Web Development at Practicum. It was created using Figma design, HTML, CSS and Java Script.
 
-### Overview
+### Overview  
 
-* Figma
-* Images
+* Intro  
+* Features  
 
-**Figma**
+  
+**Intro**
+  
+This project is made so all the elements are displayed correctly on popular screen sizes. 
+  
+link to this website :
 
-* [Link to the project in Figma](https://www.figma.com/file/SurN1jaeEQIhuZEDMhmWWf/Sprint-4-Around-The-U.S.-desktop-mobile?node-id=0%3A1)
+**Features**
+-semantic HTML5
+-CSS style
+-Flexbox
+-Grid
+-Flat BEM
+-Positioning
+-Media Querires
+-Java script 
 
-**Images**
+Screenshot 1280px 
 
-The way you'll do this at work is by exporting images directly from Figma — we recommend doing that to practice more. Don't forget to optimize them [here](https://tinypng.com/), so your project loads faster. 
+![Screenshot 1280px](https://user-images.githubusercontent.com/109795934/189763195-a11408e9-9991-4cd3-b5e3-4c91c9c2def7.png)
 
-Have fun with JavaScript!
+
+Screenshot 375px 
+
+![Screenshot 375px](https://user-images.githubusercontent.com/109795934/189763359-fa5b6151-9de2-42bc-9f58-85c46fe38351.png)
+
+
+screenshot popup 1280px
+![Screenshot 1280px](https://user-images.githubusercontent.com/109795934/193616991-33598845-bbf5-4e4c-8cff-9fb0c4027aed.png)
+
+screenshot popup 375px
+![Screenshot 375px](https://user-images.githubusercontent.com/109795934/193617085-410d2d0b-75a8-4b2f-a197-48163fd92548.png)

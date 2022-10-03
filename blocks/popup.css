@@ -94,19 +94,40 @@
     max-width: 282px;
   }
   .popup__title {
-    margin: 25px 22px 76px;
+    margin: 25px 22px 76px 22px;
+    font-size: 18px;
+    line-height: 21.78px;
+
   }
   .popup__input {
-    width: 238px;
+    max-width: 238px;
     max-height: 17px;
     margin-left: 22px;
   }
   .popup__close {
-    top: --50px;
+    
+    top: -50px;
     right: 0;
+    padding: 0;
+    
   }
   .popup__close-icon {
     width: 26px;
     height: 26px;
+    padding: 0;
+  }
+  .popup__submit-button{
+    max-width: 238px;
+    height: 46px;
+    margin: 46px 22px 25px;
+    font-size: 14px;
+    line-height: 16.94px;
+  }
+  .popup__input{
+    padding-bottom: 9px;
+  }
+  .popup__input_type_profession{
+    margin: 30px 22px 0;
+    
   }
 }

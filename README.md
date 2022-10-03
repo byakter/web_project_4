@@ -12,7 +12,7 @@ This is my 4rd project of the Web Development at Practicum. It was created using
   
 This project is made so all the elements are displayed correctly on popular screen sizes. 
   
-link to this website :
+link to this website : https://byakter.github.io/web_project_4/
 
 **Features**
 -semantic HTML5

@@ -21,7 +21,7 @@ function closePopup(popup) {
 }
  
 profilePopup.addEventListener('click', function(event){
-    if (event.target.classList.contains('popup') || event.target.classList.contains('popup__close-icon')) {
+    if (event.target.classList.contains('popup') || event.target.classList.contains('popup__close')) {
      closePopup(profilePopup)
 
 }

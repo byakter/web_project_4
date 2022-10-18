@@ -64,6 +64,26 @@
             </form>
           </div>
         </div>
+        <div class="popup popup_type_card">
+          <div class="popup__content">
+            <button type="button" class="popup__close"></button>
+            <h3 class="popup__title">New place</h3>
+            <form class="popup__form popup__form_type_card">
+              <input
+                class="popup__input popup__input_type_title"
+                type="text"
+                placeholder="Title"
+              />
+              <input
+                class="popup__input popup__input_type_link"
+                type="text"
+                placeholder="Image link"
+              />
+              <button type="submit" class="popup__submit-button">Create</button>
+            </form>
+          </div>
+        </div>
+
         <section class="cards"></section>
       </main>
       <footer class="footer">
@@ -72,16 +92,13 @@
     </div>
     <template class="card-template">
       <div class="cards__card">
-        <div class="cards__image"></div>
+        <div class="cards__image">
+          <button type="button" class="cards__button-trash"></button>
+        </div>
+
         <div class="cards__footer">
           <h2 class="cards__title"></h2>
-          <button class="heart" type="button">
-            <img
-              class="heart__image"
-              src="./images/heart.svg"
-              alt="heart-icon"
-            />
-          </button>
+          <button class="cards__button-like" type="button"></button>
         </div>
       </div>
     </template>

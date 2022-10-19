@@ -135,7 +135,7 @@ initialCards.forEach(function (card) {
 
 const likeButton = document.querySelectorAll(".cards__button-like");
 
-for(i = 0; i < likeButton.length; i++){
+for(let i = 0; i < likeButton.length; i++){
   likeButton[i].addEventListener("click", function(){
 likeButton[i].classList.toggle(".cards__button-like_active");
   });

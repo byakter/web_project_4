@@ -73,6 +73,10 @@ function handleEditFormElSubmit(evt) {
  imageCards.prepend(cardElement);
  addCardPopup.classList.remove("popup_opened");
 
+ const firstButton = document.querySelector(".cards__button-like");
+  firstButton.addEventListener("click", (e) =>{
+  e.target.classList.toggle("cards__button-like_active");
+  });
 };
 
 editFormEl.addEventListener("submit", handleEditFormElSubmit);
@@ -120,24 +124,28 @@ function generateCard(card) {
     ".cards__image"
   ).style.backgroundImage = `url(${card.link})`;
   return cardElement;
+
 }
 
 function renderCard(card, container) {
   container.append(card);
+
 }
+
 
 initialCards.forEach(function (card) {
   const newCard = generateCard(card);
   renderCard(newCard, imageCards);
+
 });
 
 //----------------Like button---------------------------------------------------------------//
 
-const likeButton = document.querySelectorAll(".cards__button-like");
+const likeButtons = document.querySelectorAll(".cards__button-like");
 
-for(let i = 0; i < likeButton.length; i++){
-  likeButton[i].addEventListener("click", function(){
-likeButton[i].classList.toggle(".cards__button-like_active");
+for(let i = 0; i < likeButtons.length; i++){
+  likeButtons[i].addEventListener("click", function(){
+likeButtons[i].classList.toggle("cards__button-like_active");
   });
 }
 

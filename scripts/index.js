@@ -3,7 +3,8 @@
 ------------------------------------------------------------------------*/
 const profileEditButton = document.querySelector(".profile__edit-button");
 const profilePopup = document.querySelector(".popup_type_profile");
-
+const previewPopup = document.querySelector(".popup__preview");
+const previewPopupImageElement = document.querySelector(".popup__preview-image");
 const profileFormElement = document.querySelector(".popup__form_type_profile");
 
 const nameInput = document.querySelector(".popup__input_type_name");
@@ -73,10 +74,21 @@ function handleEditFormElSubmit(evt) {
  imageCards.prepend(cardElement);
  addCardPopup.classList.remove("popup_opened");
 
+ const firstTrashButton = document.querySelector(".cards__button-trash");
+
+
+firstTrashButton.addEventListener("click", function(evt){
+  const deleteCard = evt.target.closest(".cards__card");
+
+ deleteCard.remove();
+});
+
  const firstButton = document.querySelector(".cards__button-like");
   firstButton.addEventListener("click", (e) =>{
   e.target.classList.toggle("cards__button-like_active");
   });
+
+  
 };
 
 editFormEl.addEventListener("submit", handleEditFormElSubmit);
@@ -120,12 +132,20 @@ function generateCard(card) {
   const cardElement = cardTemplate.cloneNode(true);
 
   cardElement.querySelector(".cards__title").textContent = card.name;
-  cardElement.querySelector(
-    ".cards__image"
-  ).style.backgroundImage = `url(${card.link})`;
+  
+  const cardImageEl = cardElement.querySelector(".cards__image");
+
+  cardImageEl.style.backgroundImage = `url(${card.link})`;
+  cardImageEl.addEventListener("click", function(){
+    previewPopup.classList.add("popup_opened");
+    previewPopupImageElement.src = `url(${card.link})`;
+console.log("clicked");
+  });
   return cardElement;
 
 }
+
+
 
 function renderCard(card, container) {
   container.append(card);
@@ -150,9 +170,22 @@ likeButtons[i].classList.toggle("cards__button-like_active");
 }
 
 
-//-----------------------remove card-------------------------------------------------//
+//---------------------------------remove card---------------------------------------//
+const firstTrashButton = document.querySelector(".cards__button-trash");
 
 
+firstTrashButton.addEventListener("click", function(evt){
+  const deleteCard = evt.target.closest(".cards__card");
 
- 
+ deleteCard.remove();
+});
+
+const trashButtons =  document.querySelectorAll(".cards__button-trash");
+
+for(let index = 0; index < trashButtons.length; index++){
+  trashButtons[index].addEventListener("click", function(evt){
+    const deleteCard = evt.target.closest(".cards__card");
+deleteCard.remove();
+  });
+}
 

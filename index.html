@@ -84,6 +84,13 @@
           </div>
         </div>
 
+        <div class="popup popup__preview popup_type_preview">
+          <div class="popup__content popup__preview_contents">
+            <button type="button" class="popup__close"></button>
+        <img  class="popup__preview-image" src="" alt="">
+          </div>
+        </div>
+        
         <section class="cards"></section>
       </main>
       <footer class="footer">
@@ -93,15 +100,19 @@
     <template class="card-template">
       <div class="cards__card">
         <div class="cards__image">
-          <button type="button" class="cards__button-trash" id="trash-btn"></button>
+          <button
+            type="button"
+            class="cards__button-trash"
+            id="trash-btn"
+          ></button>
         </div>
-
         <div class="cards__footer">
           <h2 class="cards__title"></h2>
           <button class="cards__button-like" type="button"></button>
         </div>
       </div>
     </template>
+
     <script src="./scripts/index.js"></script>
   </body>
 </html>

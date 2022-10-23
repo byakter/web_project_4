@@ -90,6 +90,36 @@
   opacity: 0.6;
   cursor: pointer;
 }
+.popup__preview {
+  position: fixed;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: rgba(0, 0, 0, 0.5);
+  visibility: hidden;
+  transition: opacity 0.6s;
+}
+.popup__preview_contents{
+  background: transparent;
+  max-width: 75vw;
+  max-height: 75vh;
+  width: auto;
+  height: auto;
+  border-radius: 0;
+  
+}
+.popup__preview_image{
+  max-width: 100%;
+  max-height: 100%;
+  object-fit: cover;
+  display: flex;
+}
+
+
 
 @media screen and (max-width: 595px) {
   .popup__content {

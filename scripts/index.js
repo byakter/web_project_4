@@ -3,9 +3,11 @@
 ------------------------------------------------------------------------*/
 const profileEditButton = document.querySelector(".profile__edit-button");
 const profilePopup = document.querySelector(".popup_type_profile");
-const previewPopup = document.querySelector(".popup__preview");
+const previewPopup = document.querySelector(".popup_type_preview");
 const previewPopupImageElement = document.querySelector(".popup__preview-image");
 const profileFormElement = document.querySelector(".popup__form_type_profile");
+
+const previewCloseButton = document.querySelector(".popup_preview_type_btn")
 
 const nameInput = document.querySelector(".popup__input_type_name");
 const jobInput = document.querySelector(".popup__input_type_profession");
@@ -138,15 +140,19 @@ function generateCard(card) {
   cardImageEl.style.backgroundImage = `url(${card.link})`;
   cardImageEl.addEventListener("click", function(){
     previewPopup.classList.add("popup_opened");
-    previewPopupImageElement.src = `url(${card.link})`;
-console.log("clicked");
+    previewPopupImageElement.src = card.link;
+
   });
   return cardElement;
-
+  
 }
 
+previewCloseButton.addEventListener("click", function(){
+  previewPopup.classList.remove("popup_opened");
+  const previewTitleEl = document.querySelector(".popup__preview-title").textContent = card.name;
+  });
 
-
+  
 function renderCard(card, container) {
   container.append(card);
 

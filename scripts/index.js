@@ -98,6 +98,7 @@ editFormEl.addEventListener("submit", handleEditFormElSubmit);
 //------------------------------------------------------------------------//
 //                      initialCards                                      //
 //------------------------------------------------------------------------//
+
 const imageCards = document.querySelector(".cards");
 const cardTemplate = document
   .querySelector(".card-template")
@@ -141,7 +142,8 @@ function generateCard(card) {
   cardImageEl.addEventListener("click", function(){
     previewPopup.classList.add("popup_opened");
     previewPopupImageElement.src = card.link;
-
+    const previewPopupTitle = document.querySelector(".popup__preview-title");
+    previewPopupTitle.textContent = card.name;
   });
   return cardElement;
   
@@ -149,8 +151,9 @@ function generateCard(card) {
 
 previewCloseButton.addEventListener("click", function(){
   previewPopup.classList.remove("popup_opened");
-  const previewTitleEl = document.querySelector(".popup__preview-title").textContent = card.name;
-  });
+ 
+ 
+});
 
   
 function renderCard(card, container) {

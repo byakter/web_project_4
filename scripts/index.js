@@ -7,7 +7,7 @@ const previewPopup = document.querySelector(".popup_type_preview");
 const previewPopupImageElement = document.querySelector(".popup__preview-image");
 const profileFormElement = document.querySelector(".popup__form_type_profile");
 
-const previewCloseButton = document.querySelector(".popup_preview_type_btn")
+const previewCloseButton = document.querySelector(".popup__close_type_btn")
 
 const nameInput = document.querySelector(".popup__input_type_name");
 const jobInput = document.querySelector(".popup__input_type_profession");

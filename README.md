@@ -13,7 +13,7 @@ This is my 5th project of the Web Development at Practicum. It was created using
 This project is made so all the elements are displayed correctly on popular screen sizes. 
 In this website you can change the profile name and job, Add & delete photos and press "like" (heart button).  
   
-link to this website : 
+link to this website : https://byakter.github.io/web_project_4/ 
 
 **Features**
 -semantic HTML5

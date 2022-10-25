@@ -50,7 +50,6 @@
 }
 
 .popup__submit-button {
-  width: 100%;
   font-weight: 400;
   font-size: 18px;
   line-height: 22px;
@@ -96,7 +95,6 @@
   max-height: 75vh;
   border-radius: 0;
   display: flex;
-  
 }
 .popup__preview-image {
   max-width: 75vw;
@@ -123,9 +121,8 @@
   min-height: 100vh;
   opacity: 1;
   visibility: visible;
-  transition-delay:0s;
+  transition-delay: 0s;
   pointer-events: all;
-  
 }
 
 @media screen and (max-width: 595px) {
@@ -141,6 +138,7 @@
     max-width: 238px;
     max-height: 17px;
     margin-left: 22px;
+    padding-bottom: 9px;
   }
   .popup__close {
     top: -50px;
@@ -159,9 +157,7 @@
     font-size: 14px;
     line-height: 16.94px;
   }
-  .popup__input {
-    padding-bottom: 9px;
-  }
+  
   .popup__input:nth-child(2) {
     margin: 30px 22px 0;
   }

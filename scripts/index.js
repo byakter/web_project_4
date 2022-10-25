@@ -127,10 +127,10 @@ function generateCard(card) {
     e.target.classList.toggle("cards__button-like_active");
     });
 
-    const TrashButton = cardElement.querySelector(".cards__button-trash");
+    const trashButton = cardElement.querySelector(".cards__button-trash");
 
 
-    TrashButton.addEventListener("click", function(evt){
+    trashButton.addEventListener("click", function(evt){
    const deleteCard = evt.target.closest(".cards__card");
 
    deleteCard.remove();

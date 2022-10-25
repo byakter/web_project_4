@@ -13,12 +13,13 @@
   background-color: #fff;
   border-radius: 10px;
   overflow: hidden;
+  position: relative;
 }
 .cards__image {
   width: 282px;
   height: 282px;
   border-radius: 10px 10px 0px 0px;
-  position: relative;
+  
 }
 .cards__title {
   color: black;

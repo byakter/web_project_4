@@ -76,21 +76,7 @@ function handleEditFormElSubmit(evt) {
  imageCards.prepend(cardElement);
  addCardPopup.classList.remove("popup_opened");
 
- const firstTrashButton = document.querySelector(".cards__button-trash");
-
-
-firstTrashButton.addEventListener("click", function(evt){
-  const deleteCard = evt.target.closest(".cards__card");
-
- deleteCard.remove();
-});
-
- const firstButton = document.querySelector(".cards__button-like");
-  firstButton.addEventListener("click", (e) =>{
-  e.target.classList.toggle("cards__button-like_active");
-  });
-
-  
+ 
 };
 
 editFormEl.addEventListener("submit", handleEditFormElSubmit);
@@ -136,6 +122,20 @@ function generateCard(card) {
 
   cardElement.querySelector(".cards__title").textContent = card.name;
   
+  const likeButton = cardElement.querySelector(".cards__button-like");
+  likeButton.addEventListener("click", (e) =>{
+    e.target.classList.toggle("cards__button-like_active");
+    });
+
+    const TrashButton = cardElement.querySelector(".cards__button-trash");
+
+
+    TrashButton.addEventListener("click", function(evt){
+   const deleteCard = evt.target.closest(".cards__card");
+
+   deleteCard.remove();
+});
+
   const cardImageEl = cardElement.querySelector(".cards__image");
 
   cardImageEl.style.backgroundImage = `url(${card.link})`;
@@ -167,34 +167,4 @@ initialCards.forEach(function (card) {
   renderCard(newCard, imageCards);
 
 });
-
-//----------------Like button---------------------------------------------------------------//
-
-const likeButtons = document.querySelectorAll(".cards__button-like");
-
-for(let i = 0; i < likeButtons.length; i++){
-  likeButtons[i].addEventListener("click", function(){
-likeButtons[i].classList.toggle("cards__button-like_active");
-  });
-}
-
-
-//---------------------------------remove card---------------------------------------//
-const firstTrashButton = document.querySelector(".cards__button-trash");
-
-
-firstTrashButton.addEventListener("click", function(evt){
-  const deleteCard = evt.target.closest(".cards__card");
-
- deleteCard.remove();
-});
-
-const trashButtons =  document.querySelectorAll(".cards__button-trash");
-
-for(let index = 0; index < trashButtons.length; index++){
-  trashButtons[index].addEventListener("click", function(evt){
-    const deleteCard = evt.target.closest(".cards__card");
-deleteCard.remove();
-  });
-}
 

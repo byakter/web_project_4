@@ -4,10 +4,12 @@
 const profileEditButton = document.querySelector(".profile__edit-button");
 const profilePopup = document.querySelector(".popup_type_profile");
 const previewPopup = document.querySelector(".popup_type_preview");
-const previewPopupImageElement = document.querySelector(".popup__preview-image");
+const previewPopupImageElement = document.querySelector(
+  ".popup__preview-image"
+);
 const profileFormElement = document.querySelector(".popup__form_type_profile");
 
-const previewCloseButton = document.querySelector(".popup__close_type_btn")
+const previewCloseButton = document.querySelector(".popup__close_type_btn");
 
 const nameInput = document.querySelector(".popup__input_type_name");
 const jobInput = document.querySelector(".popup__input_type_profession");
@@ -15,10 +17,12 @@ const jobInput = document.querySelector(".popup__input_type_profession");
 const profileName = document.querySelector(".profile__title");
 const profileJob = document.querySelector(".profile__subtitle");
 //-------------------------------------------------------------------------
+function openPopup(popup) {
+  popup.classList.add("popup_opened");
+}
 
 profileEditButton.addEventListener("click", function () {
-  profilePopup.classList.add("popup_opened");
-
+  openPopup(profilePopup);
   nameInput.value = profileName.textContent;
   jobInput.value = profileJob.textContent;
 });
@@ -62,22 +66,21 @@ const cardTitleEl = document.querySelector(".cards__title");
 const cardImageEl = document.querySelector(".cards__image");
 
 addCardOpenBtn.addEventListener("click", function () {
-  addCardPopup.classList.add("popup_opened");
+  openPopup(addCardPopup);
 });
+
 addCardCloseBtn.addEventListener("click", function () {
-  addCardPopup.classList.remove("popup_opened");
+  closePopup(addCardPopup);
 });
 
 function handleEditFormElSubmit(evt) {
   evt.preventDefault();
-  const cardInput = {name: cardTitleInput.value, link: cardLinkInput.value};
+  const cardInput = { name: cardTitleInput.value, link: cardLinkInput.value };
   const cardElement = generateCard(cardInput);
-
- imageCards.prepend(cardElement);
- addCardPopup.classList.remove("popup_opened");
-
- 
-};
+  evt.target.reset()
+  imageCards.prepend(cardElement);
+  closePopup(addCardPopup);
+}
 
 editFormEl.addEventListener("submit", handleEditFormElSubmit);
 
@@ -121,50 +124,42 @@ function generateCard(card) {
   const cardElement = cardTemplate.cloneNode(true);
 
   cardElement.querySelector(".cards__title").textContent = card.name;
-  
+
   const likeButton = cardElement.querySelector(".cards__button-like");
-  likeButton.addEventListener("click", (e) =>{
+  likeButton.addEventListener("click", (e) => {
     e.target.classList.toggle("cards__button-like_active");
-    });
+  });
 
-    const trashButton = cardElement.querySelector(".cards__button-trash");
+  const trashButton = cardElement.querySelector(".cards__button-trash");
 
+  trashButton.addEventListener("click", function (evt) {
+    const deleteCard = evt.target.closest(".cards__card");
 
-    trashButton.addEventListener("click", function(evt){
-   const deleteCard = evt.target.closest(".cards__card");
-
-   deleteCard.remove();
-});
+    deleteCard.remove();
+  });
 
   const cardImageEl = cardElement.querySelector(".cards__image");
+  const previewPopupTitle = document.querySelector(".popup__preview-title");
 
   cardImageEl.style.backgroundImage = `url(${card.link})`;
-  cardImageEl.addEventListener("click", function(){
-    previewPopup.classList.add("popup_opened");
+  cardImageEl.addEventListener("click", function () {
+    openPopup(previewPopup);
     previewPopupImageElement.src = card.link;
-    const previewPopupTitle = document.querySelector(".popup__preview-title");
+    previewPopupImageElement.alt = "photo of" + card.name ;
     previewPopupTitle.textContent = card.name;
   });
   return cardElement;
-  
 }
 
-previewCloseButton.addEventListener("click", function(){
-  previewPopup.classList.remove("popup_opened");
- 
- 
+previewCloseButton.addEventListener("click", function () {
+  closePopup(previewPopup);
 });
 
-  
 function renderCard(card, container) {
   container.append(card);
-
 }
-
 
 initialCards.forEach(function (card) {
   const newCard = generateCard(card);
   renderCard(newCard, imageCards);
-
 });
-

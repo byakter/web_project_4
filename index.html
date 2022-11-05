@@ -51,15 +51,30 @@
             <h3 class="popup__title">Edit Profile</h3>
             <form class="popup__form popup__form_type_profile">
               <input
+                id="name-input"
                 class="popup__input popup__input_type_name"
                 type="text"
                 placeholder="Name"
+                name="name"
+                required
+                minlength="2"
+                maxlength="40"
               />
+
+              <span id="name-input-error"></span>
+
               <input
+                id="about-input"
                 class="popup__input popup__input_type_profession"
                 type="text"
                 placeholder="About me"
+                name="about"
+                required
+                minlength="2"
+                maxlength="200"
               />
+              <span id="about-input-error"></span>
+
               <button type="submit" class="popup__submit-button">Save</button>
             </form>
           </div>
@@ -73,11 +88,17 @@
                 class="popup__input popup__input_type_title"
                 type="text"
                 placeholder="Title"
+                name="place-name"
+                required
+                minlength="1"
+                maxlength="30"
               />
               <input
                 class="popup__input popup__input_type_link"
-                type="text"
-                placeholder="Image link"
+                type="url"
+                placeholder="Image-link"
+                name="link"
+                required
               />
               <button type="submit" class="popup__submit-button">Create</button>
             </form>
@@ -104,11 +125,7 @@
     <template class="card-template">
       <div class="cards__card">
         <div class="cards__image"></div>
-        <button
-          type="button"
-          class="cards__button-trash"
-          
-        ></button>
+        <button type="button" class="cards__button-trash"></button>
         <div class="cards__footer">
           <h2 class="cards__title"></h2>
           <button class="cards__button-like" type="button"></button>

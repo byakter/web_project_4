@@ -37,6 +37,7 @@ profilePopup.addEventListener("click", function (event) {
     event.target.classList.contains("popup__close")
   ) {
     closePopup(profilePopup);
+    
   }
 });
 
@@ -47,6 +48,7 @@ function handleProfileFormSubmit(evt) {
   profileJob.textContent = jobInput.value;
 
   closePopup(profilePopup);
+ 
 }
 
 profileFormElement.addEventListener("submit", handleProfileFormSubmit);

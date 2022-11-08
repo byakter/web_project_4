@@ -28,13 +28,17 @@ profileEditButton.addEventListener("click", function () {
 });
 
 function closePopup(popup) {
+  
   popup.classList.remove("popup_opened");
 }
 
-profilePopup.addEventListener("click", function (event) {
+
+profilePopup.addEventListener("click", function (evt) {
   if (
-    event.target.classList.contains("popup") ||
-    event.target.classList.contains("popup__close")
+    evt.target.classList.contains("popup") ||
+    evt.target.classList.contains("popup__close") ||
+    evt.code === 'Escape'
+
   ) {
     closePopup(profilePopup);
     
@@ -71,8 +75,15 @@ addCardOpenBtn.addEventListener("click", function () {
   openPopup(addCardPopup);
 });
 
-addCardCloseBtn.addEventListener("click", function () {
-  closePopup(addCardPopup);
+addCardPopup.addEventListener("click", function (evt) {
+  if (
+    evt.target.classList.contains("popup") ||
+    evt.target.classList.contains("popup__close")
+  ) {
+    closePopup(addCardPopup);
+    
+  }
+  
 });
 
 function handleEditFormElSubmit(evt) {
@@ -153,8 +164,15 @@ function generateCard(card) {
   return cardElement;
 }
 
-previewCloseButton.addEventListener("click", function () {
-  closePopup(previewPopup);
+previewPopup.addEventListener("click", function (evt) {
+  if (
+    evt.target.classList.contains("popup") ||
+    evt.target.classList.contains("popup__close")
+  ) {
+    
+    closePopup(previewPopup);
+  }
+ 
 });
 
 function renderCard(card, container) {

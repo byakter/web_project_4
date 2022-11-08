@@ -19,6 +19,7 @@
   background-color: white;
   color: black;
   max-width: 430px;
+
   border-radius: 10px;
   position: relative;
 }
@@ -44,9 +45,9 @@
   padding-right: 0;
   padding-top: 0;
 }
-.popup__input:nth-child(2) {
+.popup__input:nth-child(3) {
   margin-top: 29.74px;
-  margin-bottom: 48px;
+  
 }
 
 .popup__submit-button {
@@ -59,7 +60,7 @@
   border-radius: 2px;
   color: white;
   background-color: black;
-  margin: 0 36px 36.51px;
+  margin: 31.34px 36px 36.51px;
   border: 0;
   padding: 0;
   cursor: pointer;
@@ -125,6 +126,20 @@
   pointer-events: all;
 }
 
+.popup__span {
+  font-family: "Inter";
+  font-style: normal;
+  font-weight: 400;
+  font-size: 12px;
+  line-height: 15px;
+  color: #ff0000;
+  margin-top: 5px;
+  margin-left: 36px;
+  
+
+  
+}
+
 @media screen and (max-width: 595px) {
   .popup__content {
     max-width: 282px;
@@ -157,7 +172,7 @@
     font-size: 14px;
     line-height: 16.94px;
   }
-  
+
   .popup__input:nth-child(2) {
     margin: 30px 22px 0;
   }

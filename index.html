@@ -60,8 +60,7 @@
                 minlength="2"
                 maxlength="40"
               />
-
-              <span id="name-input-error"></span>
+              <span id="name-input-error" class="popup__span"></span>
 
               <input
                 id="about-input"
@@ -73,8 +72,7 @@
                 minlength="2"
                 maxlength="200"
               />
-              <span id="about-input-error"></span>
-
+              <span id="about-input-error" class="popup__span"></span>
               <button type="submit" class="popup__submit-button">Save</button>
             </form>
           </div>
@@ -86,6 +84,7 @@
             <form class="popup__form popup__form_type_card">
               <input
                 class="popup__input popup__input_type_title"
+                id="place-name"
                 type="text"
                 placeholder="Title"
                 name="place-name"
@@ -93,13 +92,16 @@
                 minlength="1"
                 maxlength="30"
               />
+              <span id="place-name-error" class="popup__span"></span>
               <input
                 class="popup__input popup__input_type_link"
                 type="url"
+                id="image-link"
                 placeholder="Image-link"
                 name="link"
                 required
               />
+              <span id="image-link-error" class="popup__span"></span>
               <button type="submit" class="popup__submit-button">Create</button>
             </form>
           </div>

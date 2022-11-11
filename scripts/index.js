@@ -45,15 +45,14 @@ profilePopup.addEventListener("click", function (evt) {
     closePopup(profilePopup);
     
   }
-  document.addEventListener("keydown", function(e){
-    
-      if (e.key === "Escape"){
-      closePopup(profilePopup);
-    }
-  })
-  
   
 });
+document.addEventListener("keydown", function(e){
+    
+  if (e.key === "Escape"){
+  closePopup(profilePopup);
+}
+})
 
 
 function handleProfileFormSubmit(evt) {
@@ -90,17 +89,24 @@ addCardPopup.addEventListener("click", function (evt) {
   if (
     evt.target.classList.contains("popup") ||
     evt.target.classList.contains("popup__close")
-  ) {
+  )
+  
+  
+  
+  
+  {
     closePopup(addCardPopup);
     
   }
-  document.addEventListener("keydown", function(e){
-    
-    if (e.key === "Escape"){
-      closePopup(addCardPopup);
-    }
-  })
+  
 });
+document.addEventListener("keydown", function(e){
+    
+  
+  if (e.key === "Escape"){
+    closePopup(addCardPopup);
+  }
+})
 
 function handleEditFormElSubmit(evt) {
   evt.preventDefault();

@@ -196,6 +196,12 @@ previewPopup.addEventListener("click", function (evt) {
   }
  
 });
+document.addEventListener("keydown", function(e){
+    
+  if (e.key === "Escape"){
+  closePopup(previewPopup);
+}
+})
 
 function renderCard(card, container) {
   container.append(card);

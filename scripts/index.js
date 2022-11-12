@@ -40,6 +40,8 @@ profileEditButton.addEventListener("click", function () {
 
 function closePopup(popup) {
   popup.classList.remove("popup_opened");
+  document.removeEventListener("keydown", closeByEscape);
+
 }
 
 profilePopup.addEventListener("click", function (evt) {

@@ -16,11 +16,19 @@ const jobInput = document.querySelector(".popup__input_type_profession");
 
 const profileName = document.querySelector(".profile__title");
 const profileJob = document.querySelector(".profile__subtitle");
+
+
 //-------------------------------------------------------------------------//
+function closeByEscape(evt){
+  if (evt.key === "Escape"){
+    const openedPopup = document.querySelector(".popup_opened");
+    closePopup(openedPopup);
+  }
+}
 
 function openPopup(popup) {
   popup.classList.add("popup_opened");
-  
+  document.addEventListener("keydown", closeByEscape);
 }
 
 profileEditButton.addEventListener("click", function () {
@@ -42,11 +50,7 @@ profilePopup.addEventListener("click", function (evt) {
     closePopup(profilePopup);
   }
 });
-document.addEventListener("keydown", function (e) {
-  if (e.key === "Escape") {
-    closePopup(profilePopup);
-  }
-});
+
 
 function handleProfileFormSubmit(evt) {
   evt.preventDefault();
@@ -86,11 +90,7 @@ addCardPopup.addEventListener("click", function (evt) {
   }
 });
 
-document.addEventListener("keydown", function (e) {
-  if (e.key === "Escape") {
-    closePopup(addCardPopup);
-  }
-});
+
 
 function handleEditFormElSubmit(evt) {
   evt.preventDefault();
@@ -178,11 +178,7 @@ previewPopup.addEventListener("click", function (evt) {
     closePopup(previewPopup);
   }
 });
-document.addEventListener("keydown", function (e) {
-  if (e.key === "Escape") {
-    closePopup(previewPopup);
-  }
-});
+
 
 function renderCard(card, container) {
   container.append(card);

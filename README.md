@@ -1,6 +1,6 @@
 
-# Project 4: Around The U.S.
-This is my 5th project of the Web Development at Practicum. It was created using Figma design, HTML, CSS and Java Script.
+# Project 6: Around The U.S.
+This is my 6th project of the Web Development at Practicum. It was created using Figma design, HTML, CSS and Java Script.
 
 ### Overview  
 
@@ -11,7 +11,10 @@ This is my 5th project of the Web Development at Practicum. It was created using
 **Intro**
   
 This project is made so all the elements are displayed correctly on popular screen sizes. 
-In this website you can change the profile name and job, Add & delete photos and press "like" (heart button).  
+In this website you can change the profile name and job, Add & delete photos and press "like" (heart button). 
+The forms are validated and will show the user an erroe message if the input is invalid.
+The submit button will be inactove as long as the input is invalid.
+ 
   
 link to this website : https://byakter.github.io/web_project_4/ 
 
@@ -48,3 +51,11 @@ screenshot add image form popup
 screenshot of preview image popup
 
 ![Image preview popup](https://user-images.githubusercontent.com/109795934/197833351-4c1f7298-0417-4e31-93b5-6a4184ba6f4e.png)
+
+scrrenshot of error message and inactive button
+
+![Screenshot (138)](https://user-images.githubusercontent.com/109795934/201473062-31ff4689-0873-4cec-8fad-c27c766dd4c8.png)
+
+screenshot of active button
+
+![Screenshot (139)](https://user-images.githubusercontent.com/109795934/201473116-186058ea-3630-4985-8fda-727e8f331ac0.png)

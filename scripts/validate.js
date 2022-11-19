@@ -37,16 +37,16 @@ if(isValid) {
 function enableValidation(settings) {
   const forms = [...document.querySelectorAll(settings.formSelector)];
 
-  forms.forEach((form) => {
-    form.addEventListener("submit", (e) => e.preventDefault());
+  forms.forEach((formElement) => {
+    formElement.addEventListener("submit", (e) => e.preventDefault());
 
-    const inputList = [...form.querySelectorAll(settings.inputSelector)];
-    const submitButton = form.querySelector(settings.submitButtonSelector);
+    const inputList = [...formElement.querySelectorAll(settings.inputSelector)];
+    const submitButton = formElement.querySelector(settings.submitButtonSelector);
 
     
   toggleButtonState(inputList, submitButton, settings);
 
-    form.addEventListener('reset', () => {
+    formElement.addEventListener('reset', () => {
       
       setTimeout(() => {
         toggleButtonState(inputList, submitButton, settings);

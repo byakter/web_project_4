@@ -9,13 +9,14 @@ const settings = {
   inputErrorClass: "popup__input_type_error",
   errorClass: "popup__error_visible",
 };
+const profileFormElement = document.querySelector(".popup__form_type_profile");
+const addCardFormElement = document.querySelector(".popup__form_type_card");
 
-//const editFormElement = document.querySelector(".popup__form");
-//const addCardFormElement = document.querySelector(".popup__form");
+const editFormValidator = new FormValidator(settings, profileFormElement);
+const addCardFormValidator = new FormValidator(settings, addCardFormElement);
 
-//const editFormValidator = new FormValidator(settings, editFormElement);
-//const addCardFormValidator = new FormValidator(settings, addCardFormElement);
-
+editFormValidator.enableValidation();
+addCardFormValidator.enableValidation();
 
 
 /*-----------------------------------------------------------------------//
@@ -27,7 +28,7 @@ const previewPopup = document.querySelector(".popup_type_preview");
 const previewPopupImageElement = document.querySelector(
   ".popup__preview-image"
 );
-const profileFormElement = document.querySelector(".popup__form_type_profile");
+
 
 const previewCloseButton = document.querySelector(".popup__close_type_btn");
 
@@ -91,7 +92,7 @@ profileFormElement.addEventListener("submit", handleProfileFormSubmit);
 const addCardPopup = document.querySelector(".popup_type_card");
 const addCardCloseBtn = addCardPopup.querySelector(".popup__close");
 const addCardOpenBtn = document.querySelector(".profile__button");
-const editFormEl = document.querySelector(".popup__form_type_card");
+
 
 const cardTitleInput = addCardPopup.querySelector(".popup__input_type_title");
 const cardLinkInput = addCardPopup.querySelector(".popup__input_type_link");

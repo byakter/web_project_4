@@ -1,79 +1,83 @@
-function showError(input, settings) {
-    const errorElement = document.querySelector(`#${input.id}-error`);
-    errorElement.textContent = input.validationMessage;
- 
-    input.classList.add(settings.inputErrorClass);
+const showInputError = (
+  formElement,
+  input,
+  errorMessage,
+  { errorClass, inputErrorClass }
+) => {
+  const errorElement = formElement.querySelector(`#${input.id}-error`);
+  errorElement.textContent = errorMessage;
+  errorElement.classList.add(errorClass);
+  input.classList.add(inputErrorClass);
+};
 
-}
+const hideInputError = (
+  formElement,
+  input,
+  { errorClass, inputErrorClass }
+) => {
+  const errorElement = formElement.querySelector(`#${input.id}-error`);
+  errorElement.textContent = "";
+  errorElement.classList.remove(errorClass);
+  input.classList.remove(inputErrorClass);
+};
 
-function hideError(input, settings) {
-    const errorElement = document.querySelector(`#${input.id}-error`);
-    errorElement.textContent = "";
-
-    input.classList.remove(settings.inputErrorClass);
-
-}
-
-function checkValidity(input, settings) {
+const checkInputValidity = (formElement, input, settings) => {
   if (input.validity.valid) {
-    hideError(input, settings);
+    hideInputError(formElement, input, settings);
   } else {
-    showError(input, settings);
+    showInputError(formElement, input, input.validationMessage, settings);
   }
-}
+};
 
-function toggleButtonState(inputList, submitButton, settings) {
-const isValid = inputList.every(input => input.validity.valid);
+const isValid = inputList => inputList.every((input) => input.validity.valid);
 
-if(isValid) {
+const toggleButtonState = (inputList, submitButton, {inactiveButtonClass}) => {
+  
+
+  if (isValid(inputList)) {
     submitButton.disabled = false;
-    submitButton.classList.remove(settings.inactiveButtonClass);
-}else{
+    submitButton.classList.remove(inactiveButtonClass);
+  } else {
     submitButton.disabled = "disabled";
-    submitButton.classList.add(settings.inactiveButtonClass);
-}
-}
+    submitButton.classList.add(inactiveButtonClass);
+  }
+};
 
-function enableValidation(settings) {
-  const forms = [...document.querySelectorAll(settings.formSelector)];
+const setEventListeners = (formElement, settings) => {
+  const inputList = [...formElement.querySelectorAll(settings.inputSelector)];
+  const submitButton = formElement.querySelector(settings.submitButtonSelector);
 
-  forms.forEach((formElement) => {
-    formElement.addEventListener("submit", (e) => e.preventDefault());
-
-    const inputList = [...formElement.querySelectorAll(settings.inputSelector)];
-    const submitButton = formElement.querySelector(settings.submitButtonSelector);
-
-    
   toggleButtonState(inputList, submitButton, settings);
 
-    formElement.addEventListener('reset', () => {
-      
-      setTimeout(() => {
-        toggleButtonState(inputList, submitButton, settings);
-      }, 0); 
-    });
-  
-    inputList.forEach((input) => {
+  formElement.addEventListener("reset", () => {
+    setTimeout(() => {
+      toggleButtonState(inputList, submitButton, settings);
+    }, 0);
+  });
 
-      input.addEventListener("input", () => {
-        checkValidity(input, settings);
-        toggleButtonState(inputList, submitButton, settings);
-
-        
-      });
+  inputList.forEach((input) => {
+    input.addEventListener("input", () => {
+      checkInputValidity(formElement, input, settings);
+      toggleButtonState(inputList, submitButton, settings);
     });
   });
-}
+};
 
-const config = {
+const enableValidation = (settings) => {
+  const formList = [...document.querySelectorAll(settings.formSelector)];
+
+  formList.forEach((formElement) => {
+    formElement.addEventListener("submit", (e) => e.preventDefault());
+
+    setEventListeners(formElement, settings);
+  });
+};
+
+enableValidation({
   formSelector: ".popup__form",
   inputSelector: ".popup__input",
   submitButtonSelector: ".popup__submit-button",
   inactiveButtonClass: "popup__button_disabled",
   inputErrorClass: "popup__input_type_error",
   errorClass: "popup__error_visible",
-};
-
-enableValidation(config);
-
-
+});

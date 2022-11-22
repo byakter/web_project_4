@@ -53,6 +53,7 @@ function openPopup(popup) {
 }
 
 profileEditButton.addEventListener("click", function () {
+  editFormValidator.resetValidation()
   openPopup(profilePopup);
   nameInput.value = profileName.textContent;
   jobInput.value = profileJob.textContent;
@@ -101,10 +102,13 @@ const cardTitleEl = document.querySelector(".cards__title");
 const cardImageEl = document.querySelector(".cards__image");
 
 addCardOpenBtn.addEventListener("click", function () {
+  addCardFormValidator.resetValidation()
+
   openPopup(addCardPopup);
 });
 
 addCardPopup.addEventListener("click", function (evt) {
+  
   if (
     evt.target.classList.contains("popup") ||
     evt.target.classList.contains("popup__close")
@@ -116,6 +120,7 @@ addCardPopup.addEventListener("click", function (evt) {
 
 
 function handleEditFormElSubmit(evt) {
+  
   evt.preventDefault();
   const cardInput = { name: cardTitleInput.value, link: cardLinkInput.value };
   const cardElement = generateCard(cardInput);
@@ -124,7 +129,7 @@ function handleEditFormElSubmit(evt) {
   closePopup(addCardPopup);
 }
 
-editFormEl.addEventListener("submit", handleEditFormElSubmit);
+addCardFormElement.addEventListener("submit", handleEditFormElSubmit);
 
 //------------------------------------------------------------------------//
 //                      initialCards                                      //

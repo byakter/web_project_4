@@ -1,6 +1,6 @@
 
-# Project 6: Around The U.S.
-This is my 6th project of the Web Development at Practicum. It was created using Figma design, HTML, CSS and Java Script.
+# Project 7: Around The U.S.
+This is my 7th project of the Web Development at Practicum. It was created using Figma design, HTML, CSS and Java Script.
 
 ### Overview  
 

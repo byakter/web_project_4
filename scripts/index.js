@@ -30,8 +30,6 @@ const previewPopupImageElement = document.querySelector(
 );
 
 
-//const previewCloseButton = document.querySelector(".popup__close_type_btn");
-
 const nameInput = document.querySelector(".popup__input_type_name");
 const jobInput = document.querySelector(".popup__input_type_profession");
 
@@ -86,7 +84,6 @@ profileFormElement.addEventListener("submit", handleProfileFormSubmit);
                                 Add cards
 ------------------------------------------------------------------------*/
 const addCardPopup = document.querySelector(".popup_type_card");
-//const addCardCloseBtn = addCardPopup.querySelector(".popup__close");
 const addCardOpenBtn = document.querySelector(".profile__button");
 
 

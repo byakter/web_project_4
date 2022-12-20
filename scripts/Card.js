@@ -38,7 +38,7 @@ export class Card {
       deleteCard.remove();
     });
 
-    cardImageEl.addEventListener("click", function () {
+    cardImageEl.addEventListener("click", () => {
       openPopup(previewPopup);
       previewPopupImageElement.src = this._link;
       previewPopupImageElement.alt = "photo of" + this._name;
@@ -48,38 +48,3 @@ export class Card {
     return this._cardElement;
   };
 }
-
-/*function generateCard(card) {
-  const cardElement = cardTemplate.cloneNode(true);
-  const likeButton = cardElement.querySelector(".cards__button-like");
-  const trashButton = cardElement.querySelector(".cards__button-trash");
-  const cardImageEl = cardElement.querySelector(".cards__image");
-
-  cardImageEl.style.backgroundImage = `url(${card.link})`;
-  cardElement.querySelector(".cards__title").textContent = card.name;
-
-  
-  likeButton.addEventListener("click", (e) => {
-    e.target.classList.toggle("cards__button-like_active");
-  });
-
-  
-
-  trashButton.addEventListener("click", function (evt) {
-    const deleteCard = evt.target.closest(".cards__card");
-
-    deleteCard.remove();
-  });
-
-  
-  const previewPopupTitle = document.querySelector(".popup__preview-title");
-
-  
-  cardImageEl.addEventListener("click", function () {
-    openPopup(previewPopup);
-    previewPopupImageElement.src = card.link;
-    previewPopupImageElement.alt = "photo of" + card.name;
-    previewPopupTitle.textContent = card.name;
-  });
-  return cardElement;
-}*/

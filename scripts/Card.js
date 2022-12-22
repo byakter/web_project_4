@@ -20,9 +20,7 @@ export class Card {
     e.target.classList.toggle("cards__button-like_active");
   };
 
-  generateCard = () => {
-    this._cardElement = this._cardTemplate.cloneNode(true);
-
+  _setEventListeners = () => {
     const likeButton = this._cardElement.querySelector(".cards__button-like");
     const trashButton = this._cardElement.querySelector(".cards__button-trash");
     const cardImageEl = this._cardElement.querySelector(".cards__image");
@@ -44,6 +42,13 @@ export class Card {
       previewPopupImageElement.alt = "photo of" + this._name;
       previewPopupTitle.textContent = this._name;
     });
+  }
+
+
+  generateCard = () => {
+    this._cardElement = this._cardTemplate.cloneNode(true);
+
+   this._setEventListeners();
 
     return this._cardElement;
   };

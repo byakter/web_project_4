@@ -1,15 +1,11 @@
-import {
-  previewPopup,
-  openPopup,
-  previewPopupImageElement,
-  previewPopupTitle,
-} from "./utils.js";
 
 export class Card {
-  constructor({ name, link }, templateCardSelector) {
+  constructor({ name, link }, templateCardSelector, handlerCardClick) {
     this._name = name;
     this._link = link;
     this._templateCardSelector = templateCardSelector;
+    this._handlerCardClick = handlerCardClick; 
+    
 
     this._cardTemplate = document
       .querySelector(templateCardSelector)
@@ -37,10 +33,7 @@ export class Card {
     });
 
     cardImageEl.addEventListener("click", () => {
-      openPopup(previewPopup);
-      previewPopupImageElement.src = this._link;
-      previewPopupImageElement.alt = "photo of" + this._name;
-      previewPopupTitle.textContent = this._name;
+      this._handlerCardClick(this._name, this._link);
     });
   }
 

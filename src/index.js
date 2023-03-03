@@ -20,7 +20,7 @@ const userInfo = new UserInfo({
 const imageModal = new PopupWithImage(".popup_type_preview");
 imageModal.setEventListeners();
 
-const editModal = new PopupWithForm(".popup_type_profile", userInfo.setUserInfo);
+const editModal = new PopupWithForm(".popup_type_card", userInfo.setUserInfo);
 
 editModal.setEventListeners();
 

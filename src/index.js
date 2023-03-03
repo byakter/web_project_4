@@ -24,7 +24,7 @@ const editModal = new PopupWithForm(".popup_type_card", userInfo.setUserInfo);
 
 editModal.setEventListeners();
 
-const addCardModal = new PopupWithForm(".popup__form_type_profile", (data) => {
+const addCardModal = new PopupWithForm(".popup__form", (data) => {
   const cardInput = { name: data["place-name"], link: data.link };
   const cardElement = generateCard(cardInput);
 

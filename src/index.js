@@ -17,10 +17,12 @@ const userInfo = new UserInfo({
   profileJobSelector: ".profile__subtitle",
 });
 
+
 const imageModal = new PopupWithImage(".popup_type_preview");
 imageModal.setEventListeners();
 
-const editModal = new PopupWithForm(".popup_type_card", userInfo.setUserInfo);
+const editModal = new PopupWithForm(".popup_type_profile", (data) => userInfo.setUserInfo(data));
+
 
 editModal.setEventListeners();
 
@@ -64,11 +66,11 @@ const profilePopup = document.querySelector(".popup_type_profile");
 //-------------------------------------------------------------------------//
 
 profileEditButton.addEventListener("click", function () {
+  const data = userInfo.getUserInfo()
   editModal.open();
   editFormValidator.resetValidation();
-  //openPopup(profilePopup);
-  //nameInput.value = profileName.textContent;
-  // jobInput.value = profileJob.textContent;
+  nameInput.value = data.name;
+   jobInput.value = data.job;
 });
 
 profilePopup.addEventListener("click", function (evt) {

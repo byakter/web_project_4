@@ -4,6 +4,8 @@ class FormValidator {
     this.formElement = formElement;
   }
 
+
+
   _showInputError = (input, errorMessage) => {
     const { inputErrorClass, errorClass } = this.settings;
 

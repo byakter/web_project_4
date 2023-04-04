@@ -1,4 +1,6 @@
-export class UserInfo {
+
+
+export class UserInfo  {
   constructor({ profileNameSelector, profileJobSelector }) {
     this._profileName = document.querySelector(profileNameSelector);
     this._profileJob = document.querySelector(profileJobSelector);

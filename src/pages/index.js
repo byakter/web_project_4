@@ -1,42 +1,12 @@
 import "./index.css";
 import { Card } from "../components/Card.js";
 import FormValidator from "../components/FormValidator.js";
-import {
 
-  previewPopupImageElement,
-  previewPopupTitle,
-} from "../components/utils.js";
 import { PopupWithImage } from "../components/PopupWithImage.js";
 import { PopupWithForm } from "../components/PopupWithForm.js";
 import { UserInfo } from "../components/UserInfo.js";
-import { Section } from "../components/Section.js"
-
-const initialCards = [
-  {
-    name: "Yosemite Valley",
-    link: "https://code.s3.yandex.net/web-code/yosemite.jpg",
-  },
-  {
-    name: "Lake Louise",
-    link: "https://code.s3.yandex.net/web-code/lake-louise.jpg",
-  },
-  {
-    name: "Bald Mountains",
-    link: "https://code.s3.yandex.net/web-code/bald-mountains.jpg",
-  },
-  {
-    name: "Latemar",
-    link: "https://code.s3.yandex.net/web-code/latemar.jpg",
-  },
-  {
-    name: "Vanoise National Park",
-    link: "https://code.s3.yandex.net/web-code/vanoise.jpg",
-  },
-  {
-    name: "Lago di Braies",
-    link: "https://code.s3.yandex.net/web-code/lago.jpg",
-  },
-];
+import { Section } from "../components/Section.js";
+import { initialCards } from "../utils/constants.js";
 
 const imageCards = document.querySelector(".cards");
 const cardTemplateSelector = ".card-template";
@@ -46,22 +16,18 @@ function generateCard(card) {
   return cardElement.generateCard();
 }
 
-
 const section = new Section(
   {
     items: initialCards,
-    renderer: (data) => { 
-      generateCard(data, imageCards);
+    renderer: (data) => {
+      imageCards.append(generateCard(data));
+      // generateCard(data, imageCards);
     },
   },
-  "imageCards"
-); 
+  ".cards"
+);
 
-section.render()
-
-
-
-
+section.render();
 
 const userInfo = new UserInfo({
   profileNameSelector: ".profile__title",
@@ -80,10 +46,8 @@ editModal.setEventListeners();
 const addCardModal = new PopupWithForm(".popup_type_card", (data) => {
   const cardInput = { name: data["place-name"], link: data.link };
   const cardElement = generateCard(cardInput);
-
-  imageCards.prepend(cardElement);
-
-  
+  section.addItem(cardElement);
+  //   imageCards.prepend(cardElement);
 });
 
 addCardModal.setEventListeners();
@@ -129,47 +93,30 @@ profileEditButton.addEventListener("click", function () {
 /*-----------------------------------------------------------------------//
                                 Add cards
 ------------------------------------------------------------------------*/
-const addCardPopup = document.querySelector(".popup_type_card");
+// const addCardPopup = document.querySelector(".popup_type_card");
 const addCardOpenBtn = document.querySelector(".profile__button");
 
-const cardTitleInput = addCardPopup.querySelector(".popup__input_type_title");
-const cardLinkInput = addCardPopup.querySelector(".popup__input_type_link");
+// const cardTitleInput = addCardPopup.querySelector(".popup__input_type_title");
+// const cardLinkInput = addCardPopup.querySelector(".popup__input_type_link");
 
 addCardOpenBtn.addEventListener("click", function () {
-  cardTitleInput.value = "";
-  cardLinkInput.value = "";
+  addCardModal.open();
   addCardFormValidator.resetValidation();
 
- addCardModal.open();
 });
-
-
 
 //------------------------------------------------------------------------//
 //                      initialCards                                      //
 //------------------------------------------------------------------------//
 
-
 //const cardTemplate = document
- // .querySelector(".card-template")
-  //.content.querySelector(".cards__card");
-
-
+// .querySelector(".card-template")
+//.content.querySelector(".cards__card");
 
 function handlerCardClick(name, link) {
-  
-  previewPopupImageElement.src = link;
-  previewPopupImageElement.alt = "photo of" + name;
-  previewPopupTitle.textContent = name;
-
   imageModal.open(name, link);
-
 }
 
-
-
-
-initialCards.forEach(function (cardData) {
-  imageCards.append(generateCard(cardData));
-  
-});
+// initialCards.forEach(function (cardData) {
+//   // imageCards.append(generateCard(cardData));
+// });

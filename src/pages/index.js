@@ -1,14 +1,31 @@
 import "./index.css";
 import { Card } from "../components/Card.js";
 import FormValidator from "../components/FormValidator.js";
-
 import { PopupWithImage } from "../components/PopupWithImage.js";
 import { PopupWithForm } from "../components/PopupWithForm.js";
 import { UserInfo } from "../components/UserInfo.js";
 import { Section } from "../components/Section.js";
-import { initialCards, settings } from "../utils/constants.js";
+import { settings } from "../utils/constants.js";
+import { api } from "../components/Api";
 
-//const imageCards = document.querySelector(".cards");
+api.getInitialCards().then((res) => {
+  const section = new Section(
+    {
+      items: res,
+      renderer: (data) => {
+        section.appendItem(generateCard(data));
+      },
+    },
+    ".cards"
+  );
+
+  section.render();
+});
+
+api.getUserInfo().then((res) => {
+  userInfo.setUserInfo(res);
+});
+
 const cardTemplateSelector = ".card-template";
 
 function generateCard(card) {
@@ -16,17 +33,17 @@ function generateCard(card) {
   return cardElement.generateCard();
 }
 
-const section = new Section(
-  {
-    items: initialCards,
-    renderer: (data) => {
-      section.appendItem(generateCard(data));
-    },
-  },
-  ".cards"
-);
+// const section = new Section(
+//   {
+//     items: initialCards,
+//     renderer: (data) => {
+//       section.appendItem(generateCard(data));
+//     },
+//   },
+//   ".cards"
+// );
 
-section.render();
+// section.render();
 
 const userInfo = new UserInfo({
   profileNameSelector: ".profile__title",
@@ -43,14 +60,26 @@ const editModal = new PopupWithForm(".popup_type_profile", (data) =>
 editModal.setEventListeners();
 
 const addCardModal = new PopupWithForm(".popup_type_card", (data) => {
-  const cardInput = { name: data["place-name"], link: data.link };
-  const cardElement = generateCard(cardInput);
-  section.addItem(cardElement);
-  
+  api.createCard(data).then((res) => {
+    const section = new Section(
+      {
+        items: [],
+        renderer: (data) => {
+          section.appendItem(generateCard(data));
+        },
+      },
+      ".cards"
+    );
+    const cardElement = generateCard(res);
+    section.addItem(cardElement);
+    section.render();
+  });
+  // const cardInput = { name: data["place-name"], link: data.link };
+  // const cardElement = generateCard(cardInput);
+  // section.addItem(cardElement);
 });
 
 addCardModal.setEventListeners();
-
 
 const profileFormElement = document.querySelector(".popup__form_type_profile");
 const addCardFormElement = document.querySelector(".popup__form_type_card");
@@ -66,10 +95,8 @@ addCardFormValidator.enableValidation();
 ------------------------------------------------------------------------*/
 const profileEditButton = document.querySelector(".profile__edit-button");
 
-
 const nameInput = document.querySelector(".popup__input_type_name");
 const jobInput = document.querySelector(".popup__input_type_profession");
-
 
 //-------------------------------------------------------------------------//
 
@@ -87,15 +114,11 @@ profileEditButton.addEventListener("click", function () {
 
 const addCardOpenBtn = document.querySelector(".profile__button");
 
-
-
 addCardOpenBtn.addEventListener("click", function () {
   addCardModal.open();
   addCardFormValidator.resetValidation();
 });
 
-
 function handleCardClick(name, link) {
   imageModal.open(name, link);
 }
-

@@ -39,6 +39,12 @@
   flex-grow: 1;
   min-width: 0;
 }
+.cards__container-likes {
+display: flex;
+flex-direction: column;
+justify-content: center;
+margin: 22px 18px auto initial;
+}
 .cards__button-like {
   background: url("../images/heart.svg") no-repeat center;
   width: 21px;
@@ -47,14 +53,21 @@
   padding: 0;
   transition: 0.3s;
   cursor: pointer;
-  margin-right: 20px;
+  margin-bottom: 3px;
 }
 .cards__button-like:hover {
   opacity: 0.5;
 }
+
 .cards__button-like_active {
   background: url(../images/Union.jpg) no-repeat center;
 }
+.cards__number-of-likes{
+  color: black;
+align-self: center;
+margin: 0px;
+}
+
 .cards__button-trash {
   background: url(../images/Trash.svg);
   background-repeat: no-repeat;
@@ -72,6 +85,8 @@
 .cards__button-trash:hover {
   opacity: 0.6;
 }
+
+
 
 @media screen and (max-width: 595px) {
   .cards {

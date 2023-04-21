@@ -5,12 +5,60 @@
     margin-top: 36.25px;
     margin-bottom: 47.25px;
   }
+  
+  .profile__container{
+    position: relative;
+  }
+  
   .profile__image {
     width: 120px;
     height: 120px;
     margin-right: 30px;
     border-radius: 50%;
+    transition: opacity 0.2s; 
   }
+  
+  .profile__container:hover .profile__image {
+    opacity: 0.2; 
+  }
+  
+  .profile__image-button {
+    width: 26px;
+    height: 26px;
+    position: absolute; 
+    top: 50%; 
+    right: 40%; 
+    transform: translate(-50%, -50%); 
+    opacity: 0; 
+    background-color: transparent;
+    border: none;
+    padding: 0;
+    margin: 0;
+  }
+  .profile__image-button img {
+    display: block;
+    width: 20px;
+    height: 20px;
+    padding: 0;
+    margin: 0;
+  }
+  
+  .profile__image:hover + .profile__image-button,
+  .profile__image-button:hover {
+    opacity: 1; 
+    cursor: pointer;
+  }
+  /* .profile__edit-button-vector{
+    
+    color: #fff;
+    width: 26px;
+    height: 26px;
+    padding: 0;
+    margin: 0;
+  } */
+  
+
+  
   .profile__description {
     display: flex;
     flex-direction: column;

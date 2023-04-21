@@ -1,9 +1,10 @@
 
 
 export class UserInfo  {
-  constructor({ profileNameSelector, profileJobSelector }) {
+  constructor({ profileNameSelector, profileJobSelector, _id }) {
     this._profileName = document.querySelector(profileNameSelector);
     this._profileJob = document.querySelector(profileJobSelector);
+    this._id = _id;
     
   }
 
@@ -11,11 +12,12 @@ export class UserInfo  {
     return {
       name: this._profileName.textContent,
       job: this._profileJob.textContent,
+      _id: this._id,
     };
   }
 
-  setUserInfo({ name, about }) {
- 
+  setUserInfo({ name, about, _id }) {
+    this._id = _id;
     this._profileName.textContent = name;
     this._profileJob.textContent = about;
   }

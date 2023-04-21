@@ -12,6 +12,7 @@ class Api {
   constructor({ baseUrl, headers }) {
     this._baseUrl = baseUrl;
     this._headers = headers;
+   
   }
 
   getInitialCards() {
@@ -24,16 +25,50 @@ class Api {
       headers: this._headers,
     });
   }
+changeProfileImage(data) {
+    return customFetch(`${this._baseUrl}/users/me/avatar`, {
+        headers: this._headers,
+        method : "PATCH",
+        body : JSON.stringify(data)
+      });
+}
+
   createCard(data) {
     
        return customFetch(`${this._baseUrl}/cards`, {
       headers: this._headers,
       method: "POST",
       body: JSON.stringify({name: data["place-name"], link: data.link}),
-      
+
     });
   }
+  deleteCard() {
+    
+    return customFetch(`${this._baseUrl}/cards`, {
+   headers: this._headers,
+   method: "DELETE",
+  
+
+ });
 }
+
+
+
+  addLike(cardId){
+    return customFetch(`${this._baseUrl}/cards/likes/${cardId}`, {
+        headers: this._headers,
+        method: "PUT",
+      });
+}
+deleteLike(cardId){
+    return customFetch(`${this._baseUrl}/cards/likes/${cardId}`, {
+        headers: this._headers,
+        method: "DELETE",
+      });
+}
+}
+
+
 
 export const api = new Api({
   baseUrl: "https://around.nomoreparties.co/v1/cohort-3-en",

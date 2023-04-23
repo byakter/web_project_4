@@ -72,7 +72,7 @@ export class Card {
         const deleteCard = evt.target.closest(".cards__card");
         deleteCard.remove();
       };
-      this._handleDeleteCard(deleteSpecific);
+      this._handleDeleteCard(deleteSpecific, this._cardId);
     });
 
     cardImageEl.addEventListener("click", () => {

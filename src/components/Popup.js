@@ -41,6 +41,7 @@ export class Popup {
 
   
   saving  (isSaving)  {
+    if (!this._saveButton ) return
   if (isSaving) this._saveButton.textContent = "Saving...";
   else this._saveButton.textContent = this._saveButtonText;
 };

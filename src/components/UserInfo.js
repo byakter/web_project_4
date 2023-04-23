@@ -16,9 +16,15 @@ export class UserInfo  {
     };
   }
 
-  setUserInfo({ name, about, _id }) {
+  setUserInfo({ name, about, _id, avatar}) {
     this._id = _id;
     this._profileName.textContent = name;
     this._profileJob.textContent = about;
+    if (avatar){
+      const profileImage = document.querySelector(".profile__image");
+      profileImage.src = avatar;
+    }
+    
+
   }
 }

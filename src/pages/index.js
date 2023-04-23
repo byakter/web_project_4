@@ -33,20 +33,6 @@ const isOwner = (owner) => {
   return userInfo.getUserInfo()._id === owner._id;
 };
 
-// Promise.all([api.getInitialCards(), api.getUserInfo()])
-// .then(([cardData, userData])=>{
-//   cardList.renderItems(cardData);
-
-//   userInfo.setUserInfo({userName: userData.name, userDescrpition: userData.about});
-// })
-
-// const cardList = new Section({
-//   renderer: (data) => {
-//     createCard(data)
-//   }
-// }
-// )
-
 const cardTemplateSelector = ".card-template";
 
 function generateCard(card) {
@@ -65,10 +51,7 @@ function generateCard(card) {
 const userInfo = new UserInfo({
   profileNameSelector: ".profile__title",
   profileJobSelector: ".profile__subtitle",
-  
 });
-
-
 
 const imageModal = new PopupWithImage(".popup_type_preview");
 imageModal.setEventListeners();
@@ -77,9 +60,12 @@ const deleteModal = new PopupWithSubmit(".popup_type_delete-card");
 deleteModal.setEventListeners();
 
 const editModal = new PopupWithForm(".popup_type_profile", (data) => {
-  
   userInfo.setUserInfo(data);
-  editModal.close();
+
+  api.setUserInfo(data).then((res) => {
+    userInfo.setUserInfo(res);
+    editModal.close();
+  });
 });
 
 editModal.setEventListeners();
@@ -87,8 +73,7 @@ editModal.setEventListeners();
 const editProfileImage = new PopupChangeProfileImage(
   ".popup_type_avatar",
   (data) => {
-    
-    api.changeProfileImage(data).then((res) => {
+    api.changeProfileImage({ avatar: data.avatar }).then((res) => {
       const profileImage = document.querySelector(".profile__image");
       profileImage.src = res.avatar;
 
@@ -167,11 +152,14 @@ editProfileImageBtn.addEventListener("click", function () {
 
 function handleCardClick(name, link) {
   imageModal.open(name, link);
-  editProfileImage.open(link);
 }
 
-function handleDeleteCard(deleteSpecific) {
-  deleteModal.setAction(deleteSpecific);
+function handleDeleteCard(deleteSpecific, cardId) {
+  deleteModal.setAction(() => {
+    deleteSpecific();
+    api.deleteCard(cardId);
+  });
+
   deleteModal.open();
 }
 
@@ -186,15 +174,3 @@ function handleLikeButton(likes, cardId) {
     likes.splice(index, 1);
   }
 }
-
-// const saveButton = document.getElementById("save-button");
-// const saveButtonText = saveButton.textContent;
-
-// document.forms["profile-form"].addEventListener("submit", (event) => {
-//   event.preventDefault();
-//   saveButton.textContent = "Saving...";
-
-//   setTimeout(() => {
-//     saveButton.textContent = saveButtonText;
-//   }, 3000);
-// });

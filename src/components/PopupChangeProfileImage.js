@@ -7,12 +7,7 @@ class PopupChangeProfileImage extends Popup {
     this._form = this._popup.querySelector(".popup__form");
   }
   open() {
-    // const image = document.querySelector(".profile__image");
-
-    // image.src = link;
-    // image.alt = 'Image of profile user';
-    // this._link = link;
-
+    
     super.open();
   }
   _getInputValues() {
@@ -29,7 +24,7 @@ class PopupChangeProfileImage extends Popup {
     this._form.addEventListener("submit", (e) => {
       e.preventDefault();
       this.saving(true);
-      console.log('sdfdsfs');
+      
       const data = this._getInputValues(); 
 
       this._submithandler(data);

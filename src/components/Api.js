@@ -23,8 +23,18 @@ class Api {
   getUserInfo() {
     return customFetch(`${this._baseUrl}/users/me`, {
       headers: this._headers,
+      
     });
+
   }
+  setUserInfo(data) {
+    return customFetch(`${this._baseUrl}/users/me`, {
+        headers: this._headers,
+        method : "PATCH",
+        body : JSON.stringify(data)
+      });
+}
+
 changeProfileImage(data) {
     return customFetch(`${this._baseUrl}/users/me/avatar`, {
         headers: this._headers,
@@ -42,9 +52,9 @@ changeProfileImage(data) {
 
     });
   }
-  deleteCard() {
+  deleteCard(card) {
     
-    return customFetch(`${this._baseUrl}/cards`, {
+    return customFetch(`${this._baseUrl}/cards/${card}`, {
    headers: this._headers,
    method: "DELETE",
   

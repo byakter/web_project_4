@@ -6,6 +6,10 @@ class PopupWithSubmit extends Popup {
         super(popupSelector);
         this._form = this._popup.querySelector(".popup__form_type_delete-card")
     }
+    open (){
+        super.open();
+        this._saveButton.focus();
+    }
     setAction(action) {
         this._submitHandler = action;
     }

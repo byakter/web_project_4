@@ -4,17 +4,23 @@ export class Popup {
     this.close = this.close.bind(this);
     this.closeByEscape = this.closeByEscape.bind(this);
     this._link = '';
+    this._saveButton = this._popup.querySelector("button[type='submit']")
+    if(this._saveButton){
+      this._saveButtonText = this._saveButton.textContent;
+    }
+    
   }
   open() {
     this._popup.classList.add("popup_opened");
     document.addEventListener("keydown",  this.closeByEscape);
-    
+    this.saving(false);
     
   }
 
   close() {
     this._popup.classList.remove("popup_opened");
     document.removeEventListener("keydown", this.closeByEscape);
+    
   }
 
   setEventListeners() {
@@ -32,4 +38,10 @@ export class Popup {
       this.close();
     }
   }
+
+  
+  saving  (isSaving)  {
+  if (isSaving) this._saveButton.textContent = "Saving...";
+  else this._saveButton.textContent = this._saveButtonText;
+};
 }

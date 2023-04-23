@@ -65,7 +65,10 @@ function generateCard(card) {
 const userInfo = new UserInfo({
   profileNameSelector: ".profile__title",
   profileJobSelector: ".profile__subtitle",
+  
 });
+
+
 
 const imageModal = new PopupWithImage(".popup_type_preview");
 imageModal.setEventListeners();
@@ -73,19 +76,23 @@ imageModal.setEventListeners();
 const deleteModal = new PopupWithSubmit(".popup_type_delete-card");
 deleteModal.setEventListeners();
 
-const editModal = new PopupWithForm(".popup_type_profile", (data) =>
-  userInfo.setUserInfo(data)
-);
+const editModal = new PopupWithForm(".popup_type_profile", (data) => {
+  
+  userInfo.setUserInfo(data);
+  editModal.close();
+});
 
 editModal.setEventListeners();
 
 const editProfileImage = new PopupChangeProfileImage(
   ".popup_type_avatar",
   (data) => {
+    
     api.changeProfileImage(data).then((res) => {
-     
       const profileImage = document.querySelector(".profile__image");
       profileImage.src = res.avatar;
+
+      editProfileImage.close();
     });
   }
 );
@@ -93,6 +100,7 @@ editProfileImage.setEventListeners();
 
 const addCardModal = new PopupWithForm(".popup_type_card", (data) => {
   api.createCard(data).then((res) => {
+    addCardModal.close();
     const section = new Section(
       {
         items: [],
@@ -172,10 +180,21 @@ function handleLikeButton(likes, cardId) {
 
   if (index === -1) {
     api.addLike(cardId);
-    likes.push(userInfo)
+    likes.push(userInfo);
+  } else {
+    api.deleteLike(cardId);
+    likes.splice(index, 1);
   }
-  else{
-     api.deleteLike(cardId);
-     likes.splice(index, 1)
-    }
 }
+
+// const saveButton = document.getElementById("save-button");
+// const saveButtonText = saveButton.textContent;
+
+// document.forms["profile-form"].addEventListener("submit", (event) => {
+//   event.preventDefault();
+//   saveButton.textContent = "Saving...";
+
+//   setTimeout(() => {
+//     saveButton.textContent = saveButtonText;
+//   }, 3000);
+// });

@@ -32,7 +32,7 @@ export class PopupWithForm extends Popup {
       this.saving(true);
       this._submithandler(this._getInputValues());
       
-      // this.close();
+      
     });
 
     super.setEventListeners();

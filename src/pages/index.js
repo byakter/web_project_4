@@ -3,13 +3,12 @@ import { Card } from "../components/Card.js";
 import FormValidator from "../components/FormValidator.js";
 import { PopupWithImage } from "../components/PopupWithImage.js";
 import PopupWithSubmit from "../components/PopupWithSubmit.js";
-import PopupChangeProfileImage from "../components/PopupChangeProfileImage.js";
+
 import { PopupWithForm } from "../components/PopupWithForm.js";
 import { UserInfo } from "../components/UserInfo.js";
 import { Section } from "../components/Section.js";
 import { settings } from "../utils/constants.js";
 import { api } from "../components/Api";
-import { data } from "autoprefixer";
 
 const section = new Section(
   {
@@ -21,51 +20,24 @@ const section = new Section(
   ".cards"
 );
 
-
 Promise.all([api.getUserInfo(), api.getInitialCards()])
   .then(([userData, cards]) => {
-   
     const data = {
       user: userData,
-      cards: cards
+      cards: cards,
     };
 
     userInfo.setUserInfo(userData);
     section._items = cards;
     section.render();
-    
-    
-    // renderData(data);
   })
-  .catch(err => {
-    
+  .catch((err) => {
     console.error(err);
   });
-
-
-// api.getInitialCards().then((res) => {
-//  /*
-//   const section1 = new Section(
-//     {
-//       items: res,
-//       renderer: (data) => {
-//         section.appendItem(generateCard(data));
-//       },
-//     },
-//     ".cards"
-//   );
-//   */
-//   section._items = res;
-//   section.render();
-
-// });
 
 function getUserInfo() {
   return api.getUserInfo();
 }
-// api.getUserInfo().then((res) => {
-//   userInfo.setUserInfo(res);
-// });
 
 const isOwner = (owner) => {
   return userInfo.getUserInfo()._id === owner._id;
@@ -89,8 +61,7 @@ function generateCard(card) {
 const userInfo = new UserInfo({
   profileNameSelector: ".profile__title",
   profileJobSelector: ".profile__subtitle",
-  avatarSelector: ".profile__image"
-
+  avatarSelector: ".profile__image",
 });
 
 const imageModal = new PopupWithImage(".popup_type_preview");
@@ -111,47 +82,36 @@ const editModal = new PopupWithForm(".popup_type_profile", (data) => {
 
 editModal.setEventListeners();
 
-const editProfileImage = new PopupWithForm(
-  ".popup_type_avatar",
-  (data) => {
-    api.changeProfileImage({ avatar: data.avatar }).then((res) => {
-      // const profileImage = document.querySelector(".profile__image");
-      // profileImage.src = res.avatar;
-userInfo.setAvatar(res.avatar);
+const editProfileImage = new PopupWithForm(".popup_type_avatar", (data) => {
+  api
+    .changeProfileImage({ avatar: data.avatar })
+    .then((res) => {
+      userInfo.setAvatar(res.avatar);
       editProfileImage.close();
     })
-    .catch(err => {
-    
+    .catch((err) => {
       console.error(err);
     });
-  }
-);
+});
 editProfileImage.setEventListeners();
 
 const addCardModal = new PopupWithForm(".popup_type_card", (data) => {
-  api.createCard(data).then((res) => {
-    addCardModal.close();
-    // const section = new Section(
-    //   {
-    //     items: [],
-    //     renderer: (data) => {
-    //       section.appendItem(generateCard(data));
-    //     },
-    //   },
-    //   ".cards"
-    // );
-    handleDeleteCard;
-    () => {};
+  api
+    .createCard(data)
+    .then((res) => {
+      addCardModal.close();
 
-    const cardElement = generateCard(res);
-    section.addItem(cardElement);
-    section.render();
-  })
-  .catch(err => {
-    alert ("Unknow error please try again")
-    console.error(err);
-  });
+      handleDeleteCard;
+      () => {};
 
+      const cardElement = generateCard(res);
+      section.addItem(cardElement);
+      section.render();
+    })
+    .catch((err) => {
+      alert("Unknow error please try again");
+      console.error(err);
+    });
 });
 
 addCardModal.setEventListeners();
@@ -206,15 +166,16 @@ function handleCardClick(name, link) {
 
 function handleDeleteCard(deleteSpecific, cardId) {
   deleteModal.setAction(() => {
-    
-    api.deleteCard(cardId).then(res=>{
-      deleteSpecific();
-      deleteModal.close();
-    }).catch(err => {
-      alert ("Unknow error please try again")
-      console.error(err);
-    });
-   
+    api
+      .deleteCard(cardId)
+      .then((res) => {
+        deleteSpecific();
+        deleteModal.close();
+      })
+      .catch((err) => {
+        alert("Unknow error please try again");
+        console.error(err);
+      });
   });
 
   deleteModal.open();
@@ -224,25 +185,28 @@ function handleLikeButton(likes, cardId, target, updateNumberOfLIkes) {
   const index = likes.findIndex((l) => l._id === userInfo._id);
 
   if (index === -1) {
-    api.addLike(cardId).then(res=>{
-      target.classList.toggle("cards__button-like_active");
-      likes.push(userInfo._id);
-      updateNumberOfLIkes();
-    }).catch(err => {
-      alert ("Unknow error please try again")
-      console.error(err);
-    });
-    
+    api
+      .addLike(cardId)
+      .then((res) => {
+        target.classList.toggle("cards__button-like_active");
+        likes.push(userInfo._id);
+        updateNumberOfLIkes();
+      })
+      .catch((err) => {
+        alert("Unknow error please try again");
+        console.error(err);
+      });
   } else {
-    api.deleteLike(cardId).then(res=>{
-      target.classList.toggle("cards__button-like_active");
-      likes.splice(index, 1);
-      updateNumberOfLIkes();
-    }).catch(err => {
-      alert ("Unknow error please try again")
-      console.error(err);
-    });
-    
+    api
+      .deleteLike(cardId)
+      .then((res) => {
+        target.classList.toggle("cards__button-like_active");
+        likes.splice(index, 1);
+        updateNumberOfLIkes();
+      })
+      .catch((err) => {
+        alert("Unknow error please try again");
+        console.error(err);
+      });
   }
 }
-

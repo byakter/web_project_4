@@ -28,15 +28,7 @@ export class Card {
       .querySelector(templateCardSelector)
       .content.querySelector(".cards__card");
   }
-  // _handleLikeButton = (e) => {
-  //   e.target.classList.toggle("cards__button-like_active");
-  //   console.log(this._handleLikeButton);
-  // };
 
-  // _handleDeleteCard = (e) => {
-  //   const deleteCard = e.target.closest(".cards__card");
-  //   deleteCard.remove();
-  // }
   _updateNumberOfLIkes = () => {
     this._cardElement.querySelector(".cards__number-of-likes").textContent =
       this._likes.length;
@@ -57,11 +49,10 @@ export class Card {
   
     likeButton.addEventListener("click", (e) => {
       this._handleLikeButton(this._likes, this._cardId, e.target, this._updateNumberOfLIkes);
-      // e.target.classList.toggle("cards__button-like_active");
-      // this._updateNumberOfLIkes();
+    
     });
 
-    // trashButton.addEventListener("click", this._handleDeleteCard);
+   
     const trashIcon = this._cardElement.querySelector(".cards__button-trash");
     if (!this._isOwnerCheck(this._owner)) {
       trashIcon.style.visibility = "hidden";

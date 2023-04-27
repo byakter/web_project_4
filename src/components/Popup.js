@@ -3,17 +3,11 @@ export class Popup {
     this._popup = document.querySelector(popupSelctor);
     this.close = this.close.bind(this);
     this.closeByEscape = this.closeByEscape.bind(this);
-    // this._link = '';
-    // this._saveButton = this._popup.querySelector("button[type='submit']")
-    // if(this._saveButton){
-    //   this._saveButtonText = this._saveButton.textContent;
-    // }
-    
+   
   }
   open() {
     this._popup.classList.add("popup_opened");
     document.addEventListener("keydown",  this.closeByEscape);
-    // this.saving(false);
     
   }
 
@@ -40,9 +34,5 @@ export class Popup {
   }
 
   
-//   saving  (isSaving)  {
-//     if (!this._saveButton ) return
-//   if (isSaving) this._saveButton.textContent = "Saving...";
-//   else this._saveButton.textContent = this._saveButtonText;
-// };
+
 }

@@ -6,8 +6,7 @@ const customFetch = (url, headers) =>
       }
       return Promise.reject(res.statusText);
     })
-    // .catch((err) => console.log(err));
-
+    
 class Api {
   constructor({ baseUrl, headers }) {
     this._baseUrl = baseUrl;

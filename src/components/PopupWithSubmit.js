@@ -8,7 +8,7 @@ class PopupWithSubmit extends Popup {
     }
     open (){
         super.open();
-        // this._saveButton.focus();
+        
     }
     setAction(action) {
         this._submitHandler = action;
@@ -17,7 +17,7 @@ class PopupWithSubmit extends Popup {
         this._form.addEventListener("submit", (e) => {
           e.preventDefault();
           this._submitHandler();
-        //   this.close();
+        
         });
 
         super.setEventListeners();

@@ -6,7 +6,11 @@ export class PopupWithForm extends Popup {
     
     super(popupSelector);
     this._submithandler = submitHandler;
-    this._form = this._popup.querySelector(".popup__form")
+    this._form = this._popup.querySelector(".popup__form");
+    this._saveButton = this._popup.querySelector("button[type='submit']")
+    if(this._saveButton){
+      this._saveButtonText = this._saveButton.textContent;
+    }
   
   }
 
@@ -33,12 +37,18 @@ export class PopupWithForm extends Popup {
 
     super.setEventListeners();
   }
+  saving  (isSaving)  {
+    if (!this._saveButton ) return
+  if (isSaving) this._saveButton.textContent = "Saving...";
+  else this._saveButton.textContent = this._saveButtonText;
+};
 
   close () {
-    
+    this.saving(false);
     this._form.reset();
 
     super.close();
   }
+   
 }
 

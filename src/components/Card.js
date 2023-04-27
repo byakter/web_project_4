@@ -54,11 +54,11 @@ export class Card {
     if (index > -1)
       likeButton.classList.toggle("cards__button-like_active");
 
-    // likeButton.addEventListener("click", this._handleLikeButton);
+  
     likeButton.addEventListener("click", (e) => {
-      this._handleLikeButton(this._likes, this._cardId);
-      e.target.classList.toggle("cards__button-like_active");
-      this._updateNumberOfLIkes();
+      this._handleLikeButton(this._likes, this._cardId, e.target, this._updateNumberOfLIkes);
+      // e.target.classList.toggle("cards__button-like_active");
+      // this._updateNumberOfLIkes();
     });
 
     // trashButton.addEventListener("click", this._handleDeleteCard);

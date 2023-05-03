@@ -49,7 +49,7 @@ export class Card {
       this._handleLikeButton(
         this._likes,
         this._cardId,
-        
+
         this._updateNumberOfLIkes
       );
       this.toggleHeart();
@@ -83,6 +83,5 @@ export class Card {
   toggleHeart = () => {
     const likeButton = this._cardElement.querySelector(".cards__button-like");
     likeButton.classList.toggle("cards__button-like_active");
-    // this._updateNumberOfLIkes();
   };
 }

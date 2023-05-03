@@ -14,9 +14,8 @@ export class Section {
       this._renderer(data);
     });
   }
-  
+
   appendItem(element) {
     this._container.append(element);
   }
-
 }

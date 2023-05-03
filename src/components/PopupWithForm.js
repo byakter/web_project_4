@@ -27,7 +27,6 @@ export class PopupWithForm extends Popup {
       e.preventDefault();
       this.saving(true);
       this._submithandler(this._getInputValues());
-      //submitHandler(this._getInputValues())
     });
 
     super.setEventListeners();
@@ -40,9 +39,8 @@ export class PopupWithForm extends Popup {
 
   close() {
     super.close();
-    
   }
-  open(){
+  open() {
     this.saving(false);
     this._form.reset();
     super.open();

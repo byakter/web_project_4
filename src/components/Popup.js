@@ -3,18 +3,15 @@ export class Popup {
     this._popup = document.querySelector(popupSelctor);
     this.close = this.close.bind(this);
     this.closeByEscape = this.closeByEscape.bind(this);
-   
   }
   open() {
     this._popup.classList.add("popup_opened");
-    document.addEventListener("keydown",  this.closeByEscape);
-    
+    document.addEventListener("keydown", this.closeByEscape);
   }
 
   close() {
     this._popup.classList.remove("popup_opened");
     document.removeEventListener("keydown", this.closeByEscape);
-    
   }
 
   setEventListeners() {
@@ -32,7 +29,4 @@ export class Popup {
       this.close();
     }
   }
-
-  
-
 }

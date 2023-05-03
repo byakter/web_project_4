@@ -5,18 +5,10 @@ export class PopupWithImage extends Popup {
     const caption = this._popup.querySelector(".popup__preview-title");
     const image = this._popup.querySelector(".popup__preview-image");
 
-    caption.textContent = text; 
+    caption.textContent = text;
     image.src = link;
-    image.alt = 'Image of selected tile';
-    
+    image.alt = "Image of selected tile";
 
     super.open();
-
   }
-} 
-
-
-
-
-
-
+}

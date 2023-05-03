@@ -3,7 +3,6 @@ import { Card } from "../components/Card.js";
 import FormValidator from "../components/FormValidator.js";
 import { PopupWithImage } from "../components/PopupWithImage.js";
 import PopupWithSubmit from "../components/PopupWithSubmit.js";
-
 import { PopupWithForm } from "../components/PopupWithForm.js";
 import { UserInfo } from "../components/UserInfo.js";
 import { Section } from "../components/Section.js";
@@ -36,15 +35,9 @@ Promise.all([api.getUserInfo(), api.getInitialCards()])
     console.error(err);
   });
 
-// function getUserInfo() {
-//   return api.getUserInfo();
-// }
-
 const isOwner = (owner) => {
   return userInfo.getUserInfo()._id === owner._id;
 };
-
-
 
 function generateCard(card) {
   const cardElement = new Card(
@@ -73,8 +66,6 @@ deleteModal.setEventListeners();
 deleteModal.close();
 
 const editModal = new PopupWithForm(".popup_type_profile", (data) => {
-  // userInfo.setUserInfo(data);
-
   api
     .setUserInfo(data)
     .then((res) => {
@@ -111,12 +102,8 @@ const addCardModal = new PopupWithForm(".popup_type_card", (data) => {
     .then((res) => {
       addCardModal.close();
 
-      // handleDeleteCard;
-      // () => {};
-
       const cardElement = generateCard(res);
       section.addItem(cardElement);
-      // section.render();
     })
     .catch((err) => {
       alert("Unknow error please try again");
@@ -201,8 +188,6 @@ function handleLikeButton(likes, cardId, updateNumberOfLIkes) {
     api
       .addLike(cardId)
       .then((res) => {
-        // target.classList.toggle("cards__button-like_active");
-        
         likes.push(userInfo);
         updateNumberOfLIkes();
       })
@@ -214,7 +199,6 @@ function handleLikeButton(likes, cardId, updateNumberOfLIkes) {
     api
       .deleteLike(cardId)
       .then((res) => {
-        // target.classList.toggle("cards__button-like_active");
         likes.splice(index, 1);
         updateNumberOfLIkes();
       })

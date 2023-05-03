@@ -8,7 +8,7 @@ export class PopupWithImage extends Popup {
     caption.textContent = text; 
     image.src = link;
     image.alt = 'Image of selected tile';
-    // this._link = link;
+    
 
     super.open();
 

@@ -43,16 +43,18 @@ export class Card {
     this._cardElement.querySelector(".cards__title").textContent = this._name;
     this._updateNumberOfLIkes();
     const index = this._likes.findIndex((l) => l._id === this._userInfo._id);
-    if (index > -1)
-      likeButton.classList.toggle("cards__button-like_active");
+    if (index > -1) likeButton.classList.toggle("cards__button-like_active");
 
-  
     likeButton.addEventListener("click", (e) => {
-      this._handleLikeButton(this._likes, this._cardId, e.target, this._updateNumberOfLIkes);
-    
+      this._handleLikeButton(
+        this._likes,
+        this._cardId,
+        
+        this._updateNumberOfLIkes
+      );
+      this.toggleHeart();
     });
 
-   
     const trashIcon = this._cardElement.querySelector(".cards__button-trash");
     if (!this._isOwnerCheck(this._owner)) {
       trashIcon.style.visibility = "hidden";
@@ -77,5 +79,10 @@ export class Card {
     this._setEventListeners();
 
     return this._cardElement;
+  };
+  toggleHeart = () => {
+    const likeButton = this._cardElement.querySelector(".cards__button-like");
+    likeButton.classList.toggle("cards__button-like_active");
+    // this._updateNumberOfLIkes();
   };
 }

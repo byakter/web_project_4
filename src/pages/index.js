@@ -28,27 +28,28 @@ Promise.all([api.getUserInfo(), api.getInitialCards()])
     };
 
     userInfo.setUserInfo(userData);
-    section._items = cards;
+    userInfo.setAvatar(userData.avatar);
+    section.items = cards;
     section.render();
   })
   .catch((err) => {
     console.error(err);
   });
 
-function getUserInfo() {
-  return api.getUserInfo();
-}
+// function getUserInfo() {
+//   return api.getUserInfo();
+// }
 
 const isOwner = (owner) => {
   return userInfo.getUserInfo()._id === owner._id;
 };
 
-const cardTemplateSelector = ".card-template";
+
 
 function generateCard(card) {
   const cardElement = new Card(
     card,
-    cardTemplateSelector,
+    settings.cardTemplateSelector,
     handleCardClick,
     handleDeleteCard,
     isOwner,
@@ -72,12 +73,19 @@ deleteModal.setEventListeners();
 deleteModal.close();
 
 const editModal = new PopupWithForm(".popup_type_profile", (data) => {
-  userInfo.setUserInfo(data);
+  // userInfo.setUserInfo(data);
 
-  api.setUserInfo(data).then((res) => {
-    userInfo.setUserInfo(res);
-    editModal.close();
-  });
+  api
+    .setUserInfo(data)
+    .then((res) => {
+      userInfo.setUserInfo(res);
+    })
+    .catch((err) => {
+      console.error(err);
+    })
+    .finally(() => {
+      editModal.close();
+    });
 });
 
 editModal.setEventListeners();
@@ -87,10 +95,12 @@ const editProfileImage = new PopupWithForm(".popup_type_avatar", (data) => {
     .changeProfileImage({ avatar: data.avatar })
     .then((res) => {
       userInfo.setAvatar(res.avatar);
-      editProfileImage.close();
     })
     .catch((err) => {
       console.error(err);
+    })
+    .finally(() => {
+      editProfileImage.close();
     });
 });
 editProfileImage.setEventListeners();
@@ -101,16 +111,19 @@ const addCardModal = new PopupWithForm(".popup_type_card", (data) => {
     .then((res) => {
       addCardModal.close();
 
-      handleDeleteCard;
-      () => {};
+      // handleDeleteCard;
+      // () => {};
 
       const cardElement = generateCard(res);
       section.addItem(cardElement);
-      section.render();
+      // section.render();
     })
     .catch((err) => {
       alert("Unknow error please try again");
       console.error(err);
+    })
+    .finally(() => {
+      addCardModal.close();
     });
 });
 
@@ -181,15 +194,16 @@ function handleDeleteCard(deleteSpecific, cardId) {
   deleteModal.open();
 }
 
-function handleLikeButton(likes, cardId, target, updateNumberOfLIkes) {
+function handleLikeButton(likes, cardId, updateNumberOfLIkes) {
   const index = likes.findIndex((l) => l._id === userInfo._id);
 
   if (index === -1) {
     api
       .addLike(cardId)
       .then((res) => {
-        target.classList.toggle("cards__button-like_active");
-        likes.push(userInfo._id);
+        // target.classList.toggle("cards__button-like_active");
+        
+        likes.push(userInfo);
         updateNumberOfLIkes();
       })
       .catch((err) => {
@@ -200,7 +214,7 @@ function handleLikeButton(likes, cardId, target, updateNumberOfLIkes) {
     api
       .deleteLike(cardId)
       .then((res) => {
-        target.classList.toggle("cards__button-like_active");
+        // target.classList.toggle("cards__button-like_active");
         likes.splice(index, 1);
         updateNumberOfLIkes();
       })

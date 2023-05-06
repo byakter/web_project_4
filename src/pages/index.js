@@ -76,7 +76,6 @@ const editModal = new PopupWithForm(".popup_type_profile", (data) => {
       console.error(err);
     })
     .finally(() => {
-      // editModal.saving(false);
       editModal._popup.addEventListener("animationend", () => {
         editModal.saving(false);
       });
@@ -117,7 +116,6 @@ const addCardModal = new PopupWithForm(".popup_type_card", (data) => {
       console.error(err);
     })
     .finally(() => {
-      // addCardModal.close();
       addCardModal._popup.addEventListener("animationend", () => {
         addCardModal.saving(false);
       });

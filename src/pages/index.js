@@ -70,12 +70,16 @@ const editModal = new PopupWithForm(".popup_type_profile", (data) => {
     .setUserInfo(data)
     .then((res) => {
       userInfo.setUserInfo(res);
+      editModal.close();
     })
     .catch((err) => {
       console.error(err);
     })
     .finally(() => {
-      editModal.close();
+      // editModal.saving(false);
+      editModal._popup.addEventListener("animationend", () => {
+        editModal.saving(false);
+      });
     });
 });
 
@@ -86,12 +90,15 @@ const editProfileImage = new PopupWithForm(".popup_type_avatar", (data) => {
     .changeProfileImage({ avatar: data.avatar })
     .then((res) => {
       userInfo.setAvatar(res.avatar);
+      editProfileImage.close();
     })
     .catch((err) => {
       console.error(err);
     })
     .finally(() => {
-      editProfileImage.close();
+      editProfileImage._popup.addEventListener("animationend", () => {
+        editProfileImage.saving(false);
+      });
     });
 });
 editProfileImage.setEventListeners();
@@ -110,7 +117,10 @@ const addCardModal = new PopupWithForm(".popup_type_card", (data) => {
       console.error(err);
     })
     .finally(() => {
-      addCardModal.close();
+      // addCardModal.close();
+      addCardModal._popup.addEventListener("animationend", () => {
+        addCardModal.saving(false);
+      });
     });
 });
 

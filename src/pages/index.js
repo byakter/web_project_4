@@ -76,9 +76,7 @@ const editModal = new PopupWithForm(".popup_type_profile", (data) => {
       console.error(err);
     })
     .finally(() => {
-      editModal._popup.addEventListener("animationend", () => {
-        editModal.saving(false);
-      });
+      editModal.saving(false);
     });
 });
 
@@ -95,9 +93,7 @@ const editProfileImage = new PopupWithForm(".popup_type_avatar", (data) => {
       console.error(err);
     })
     .finally(() => {
-      editProfileImage._popup.addEventListener("animationend", () => {
-        editProfileImage.saving(false);
-      });
+      editProfileImage.saving(false);
     });
 });
 editProfileImage.setEventListeners();
@@ -116,9 +112,7 @@ const addCardModal = new PopupWithForm(".popup_type_card", (data) => {
       console.error(err);
     })
     .finally(() => {
-      addCardModal._popup.addEventListener("animationend", () => {
-        addCardModal.saving(false);
-      });
+      addCardModal.saving(false);
     });
 });
 

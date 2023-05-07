@@ -24,7 +24,10 @@ export class PopupWithForm extends Popup {
   saving(isSaving) {
     if (!this._saveButton) return;
     if (isSaving) this._saveButton.textContent = "Saving...";
-    else this._saveButton.textContent = this._saveButtonText;
+    else
+      setTimeout(() => {
+        this._saveButton.textContent = this._saveButtonText;
+      }, 1000);
   }
 
   setEventListeners() {
@@ -37,9 +40,8 @@ export class PopupWithForm extends Popup {
     super.setEventListeners();
   }
 
-  open() {
-    this.saving(false);
+  close() {
     this._form.reset();
-    super.open();
+    super.close();
   }
 }
